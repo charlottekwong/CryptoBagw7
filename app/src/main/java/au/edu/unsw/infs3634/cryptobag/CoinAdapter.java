@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -65,7 +66,7 @@ public class CoinAdapter extends RecyclerView.Adapter<CoinAdapter.CoinViewHolder
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(CoinViewHolder holder, int position) {
-        Coin coin = mCoins.get(0);
+        Coin coin = mCoins.get(position);
         holder.name.setText(coin.getName());
         holder.value.setText(coin.getPriceUsd());
         holder.change.setText(coin.getPercentChange1h() + " %");
@@ -76,7 +77,7 @@ public class CoinAdapter extends RecyclerView.Adapter<CoinAdapter.CoinViewHolder
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return 100; //mCoins.size();
+        return mCoins.size();
     }
 
 }

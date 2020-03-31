@@ -28,7 +28,6 @@ public class DetailFragment extends Fragment {
 
         if(getArguments().containsKey(ARG_ITEM_ID)) {
             mCoin = CoinLoreResponse.getCoin(getArguments().getString(ARG_ITEM_ID));
-            //mCoin = new Coin();
             this.getActivity().setTitle(mCoin.getName());
         }
     }
@@ -41,11 +40,11 @@ public class DetailFragment extends Fragment {
             NumberFormat formatter = NumberFormat.getCurrencyInstance();
             ((TextView) rootView.findViewById(R.id.tvName)).setText(mCoin.getName());
             ((TextView) rootView.findViewById(R.id.tvSymbol)).setText(mCoin.getSymbol());
-            ((TextView) rootView.findViewById(R.id.tvValueField)).setText(formatter.format(mCoin.getPriceUsd()));
-            ((TextView) rootView.findViewById(R.id.tvChange1hField)).setText(String.valueOf(mCoin.getPercentChange1h()) + " %");
-            ((TextView) rootView.findViewById(R.id.tvChange24hField)).setText(String.valueOf(mCoin.getPercentChange24h()) + " %");
-            ((TextView) rootView.findViewById(R.id.tvChange7dField)).setText(String.valueOf(mCoin.getPercentChange7d()) + " %");
-            ((TextView) rootView.findViewById(R.id.tvMarketcapField)).setText(formatter.format(mCoin.getMarketCapUsd()));
+            ((TextView) rootView.findViewById(R.id.tvValueField)).setText(String.format("$%s", mCoin.getPriceUsd()));
+            ((TextView) rootView.findViewById(R.id.tvChange1hField)).setText(String.format("%s %%", mCoin.getPercentChange1h()));
+            ((TextView) rootView.findViewById(R.id.tvChange24hField)).setText(String.format("%s %%", mCoin.getPercentChange24h()));
+            ((TextView) rootView.findViewById(R.id.tvChange7dField)).setText(String.format("%s %%", mCoin.getPercentChange7d()));
+            ((TextView) rootView.findViewById(R.id.tvMarketcapField)).setText(String.format("$%s", mCoin.getMarketCapUsd()));
             ((TextView) rootView.findViewById(R.id.tvVolumeField)).setText(formatter.format(mCoin.getVolume24()));
             ((ImageView) rootView.findViewById(R.id.ivSearch)).setOnClickListener(new View.OnClickListener() {
                 @Override
